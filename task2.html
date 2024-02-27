@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#004F98;
+           background-image:url("https://img.freepik.com/free-vector/rectangle-gold-frame-with-foliage-pattern-background-vector_53876-109053.jpg?w=996&t=st=1707141691~exp=1707142291~hmac=3dbd9b441912996ef62a6b11cccb864b930a9e42b03cb52b8aaa68c1f82539a0");
+            margin: 80px;
+        }
+
+        .box {
+            max-width: 1000px;
+            margin: 100px;
+            background-color: #536878;
+            padding: 20px;
+            border-radius: 30px;
+            box-shadow:10px 10px 10px;
+        }
+
+        .question {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color:white;
+        }
+
+        .options {
+           font-size:20px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        .option {
+            margin-bottom: 10px;
+        }
+
+        .submit {
+            background-color:#36454f ;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h1 style="text-align:centre;font-size:40px;color:white">QUIZZ</h1>
+        <div class="question">1. What is the capital of India?</div>
+        <div class="options">
+            <div class="option"><input type="radio" name="q1" value="delhi"> Delhi</div>
+            <div class="option"><input type="radio" name="q1" value="mumbai"> Mumbai</div>
+            <div class="option"><input type="radio" name="q1" value="chennai"> Chennai</div>
+            <div class="option"><input type="radio" name="q1" value="kolkata"> Kolkata</div>
+        </div>
+
+        <div class="question">2. What is the largest planet in our solar system?</div>
+        <div class="options">
+            <div class="option"><input type="radio" name="q2" value="mars"> Mars</div>
+            <div class="option"><input type="radio" name="q2" value="venus"> Venus</div>
+            <div class="option"><input type="radio" name="q2" value="jupiter"> Jupiter</div>
+            <div class="option"><input type="radio" name="q2" value="earth"> Earth</div>
+        </div>
+
+        <button class="submit" onclick="submitQuiz()">Submit</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            var q1 = document.querySelector('input[name="q1"]:checked');
+            var q2 = document.querySelector('input[name="q2"]:checked');
+            var result = document.getElementById('result');
+
+            if (q1 && q2) {
+                var score = 0;
+
+                if (q1.value === 'delhi') {
+                    score += 1;
+                }
+
+                if (q2.value === 'jupiter') {
+                    score += 1;
+                }
+
+                result.textContent = 'Your score: ' + score + '/2';
+            } else {
+                result.textContent = 'Please answer all questions.';
+            }
+        }
+    </script>
+
+</body>
+</html>

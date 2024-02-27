@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Job Board</title>
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  background-image:url("https://img.freepik.com/free-photo/overhead-view-laptop-with-stationeries-tea-cup-colored-backdrop_23-2147979063.jpg"),url("https://media.istockphoto.com/id/1400982432/photo/natural-white-fabric-texture-for-background.jpg?s=612x612&w=0&k=20&c=vs-F1YWJz1bgNPGgeIcli69e2EwPly0UfnFDREXOed0=");
+  background-repeat:no-repeat,repeat;
+  background-position:right bottom,left top;
+  width:1200px;
+  height:1500px;
+ 
+ 
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.job {
+  border: 3px solid brown;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;https
+}
+
+.job h2 {
+  margin-top: 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Modal CSS */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Welcome to the Job Board</h1>
+  <div>
+    <button class="btn" id="findJobsBtn">Find Jobs</button>
+  </div>
+  <div id="jobListings">
+    <!-- Job listings will be dynamically added here -->
+    <div class="job">
+      <h2>Software Engineer</h2>
+      <p><strong>Company:</strong> ABC Inc.</p>
+      <p><strong>Location:</strong> New York, NY</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <button class="btn applyBtn" data-title="Software Engineer">Apply</button>
+    </div>
+    <div class="job">
+      <h2>Data Analyst</h2>
+      <p><strong>Company:</strong> XYZ Corp.</p>
+      <p><strong>Location:</strong> Los Angeles, CA</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <button class="btn applyBtn" data-title="Marketing Manager">Apply</button>
+    </div>
+    <div class="job">
+      <h2>Product Manager
+</h2>
+      <p><strong>Company:</strong> XYZ Corp.</p>
+      <p><strong>Location:</strong> Los Angeles, CA</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <button class="btn applyBtn" data-title="Marketing Manager">Apply</button>
+    </div>
+    <div class="job">
+      <h2>Graphic Designer </h2>
+      <p><strong>Company:</strong> XYZ Corp.</p>
+      <p><strong>Location:</strong> Los Angeles, CA</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <button class="btn applyBtn" data-title="Marketing Manager">Apply</button>
+    </div>
+     <div class="job">
+      <h2>IT Support Specialist  </h2>
+      <p><strong>Company:</strong> XYZ Corp.</p>
+      <p><strong>Location:</strong> Los Angeles, CA</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <button class="btn applyBtn" data-title="Marketing Manager">Apply</button>
+    </div>
+    <div class="job">
+        <h2>Assistant Manager</h2>
+        <p><strong>Company:</strong> XYZ Corp.</p>
+        <p><strong>Location:</strong> Los Angeles, CA</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button class="btn applyBtn" data-title="Marketing Manager">Apply</button>
+      </div>
+    
+  </div>
+</div>
+
+<!-- Modal for job application form -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="jobTitle">Apply for Job</h2>
+    <form id="jobApplicationForm">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required><br><br>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required><br><br>
+      <label for="resume">Upload Resume</label>
+      <input type="file" id="resume" name="resume" required><br><br>
+      <button type="submit" class="btn">Apply</button>
+    </form>
+  </div>
+</div>
+
+<script>
+// Event listener for find jobs button click
+document.getElementById("findJobsBtn").addEventListener("click", function() {
+  // Redirect or display job search page
+  alert("Implement job search functionality here");
+});
+
+// Event listener for apply button click
+document.addEventListener("click", function(event) {
+  if (event.target.classList.contains("applyBtn")) {
+    const jobTitle = event.target.getAttribute("data-title");
+    openModal(jobTitle);
+  }
+});
+
+// Function to open modal for job application form
+function openModal(jobTitle) {
+  const modal = document.getElementById("myModal");
+  modal.style.display = "block";
+  document.getElementById("jobTitle").innerText = jobTitle;
+}
+
+// Event listener for close button click
+document.addEventListener("click", function(event) {
+  if (event.target.classList.contains("close")) {
+    closeModal();
+  }
+});
+
+// Function to close modal
+function closeModal() {
+  const modal = document.getElementById("myModal");
+  modal.style.display = "none";
+}
+
+// Event listener for form submission
+document.getElementById("jobApplicationForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const fullName = document.getElementById("fullName").value;
+  const email = document.getElementById("email").value;
+  const resume = document.getElementById("resume").value; // You can upload the file using AJAX or fetch API
+  console.log("Job application submitted:", { fullName, email, resume });
+  closeModal();
+});
+</script>
+
+</body>
+</html>
